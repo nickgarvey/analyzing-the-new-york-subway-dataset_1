@@ -1,0 +1,569 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    % NG ADD ngarvey
+    \pagenumbering{gobble} 
+    \usepackage{parskip}
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Project 1}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section*{Effect of Rain on Subway Ridership on
+Weekdays}\label{effect-of-rain-on-subway-ridership-on-weekdays}
+
+\section*{Nick Garvey}\label{nick-garvey}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{absolute\PYZus{}import}
+        \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{division}
+        \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{print\PYZus{}function}
+        \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{unicode\PYZus{}literals}
+        
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{scipy} \PY{k+kn}{as} \PY{n+nn}{sp}
+        \PY{k+kn}{import} \PY{n+nn}{ggplot} \PY{k+kn}{as} \PY{n+nn}{gp}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.mlab} \PY{k+kn}{as} \PY{n+nn}{mlab}
+        \PY{k+kn}{import} \PY{n+nn}{statsmodels.formula.api} \PY{k+kn}{as} \PY{n+nn}{sm}
+        
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c}{\PYZsh{} Data Source: https://www.dropbox.com/s/}
+        \PY{c}{\PYZsh{} meyki2wl9xfa7yk/turnstile\PYZus{}data\PYZus{}master\PYZus{}with\PYZus{}weather.csv}
+        
+        \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{turnstile\PYZus{}weather\PYZus{}v2.csv}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection*{0. References}\label{references}
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Python for Data Analysis: Data Wrangling with Pandas, NumPy, and
+  IPython by Wes McKinney
+\item
+  Share label between subplots
+  http://stackoverflow.com/a/26892326/965648
+\item
+  Haversine formula details
+  http://en.wikipedia.org/wiki/Haversine\_formula
+\end{itemize}
+
+    \subsection*{1. Statistical Test}\label{statistical-test}
+
+    First, check if the data is normal by graphing it.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c}{\PYZsh{} Monday is 0, ... Saturday is 5, Sunday is 6}
+        \PY{n}{week\PYZus{}days} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{DATEn}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{dt}\PY{o}{.}\PY{n}{dayofweek} \PY{o}{\PYZlt{}} \PY{l+m+mi}{5}\PY{p}{]}
+        \PY{n}{week\PYZus{}days} \PY{o}{=} \PY{n}{week\PYZus{}days}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{station}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{DATEn}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rain}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+        \PY{n}{grouped\PYZus{}days} \PY{o}{=} \PY{n}{week\PYZus{}days}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{station}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{DATEn}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Add a column, rainy, that annotates if it was rainy at that station at all during that day}
+        \PY{k}{def} \PY{n+nf}{add\PYZus{}rainy\PYZus{}day}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
+            \PY{n}{group}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{rainy\PYZus{}day}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1} \PY{o+ow}{in} \PY{n}{group}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{rain}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}
+            \PY{k}{return} \PY{n}{group}
+        
+        \PY{n}{df\PYZus{}with\PYZus{}rainy} \PY{o}{=} \PY{n}{grouped\PYZus{}days}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{add\PYZus{}rainy\PYZus{}day}\PY{p}{)}
+        \PY{n}{by\PYZus{}day} \PY{o}{=} \PY{n}{df\PYZus{}with\PYZus{}rainy}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{DATEn}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{station}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rainy\PYZus{}day}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{as\PYZus{}index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+        \PY{n}{by\PYZus{}day} \PY{o}{=} \PY{n}{by\PYZus{}day}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{rain} \PY{o}{=} \PY{n}{by\PYZus{}day}\PY{p}{[}\PY{n}{by\PYZus{}day}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{rainy\PYZus{}day}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n+nb+bp}{True}\PY{p}{]}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{no\PYZus{}rain} \PY{o}{=} \PY{n}{by\PYZus{}day}\PY{p}{[}\PY{n}{by\PYZus{}day}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{rainy\PYZus{}day}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n+nb+bp}{False}\PY{p}{]}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{sharex}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+        
+        \PY{n}{no\PYZus{}rain}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Weekday Rainless Subway Station Attendance}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{rain}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Weekday Rainy Subway Station Attendance}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{45}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Apply the labels just as text as it isn\PYZsq{}t obvious how to share a label among two subplots}
+        \PY{c}{\PYZsh{} Code from http://stackoverflow.com/a/26892326/965648}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.02}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Daily Subway Entries Per Station}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{ha}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{center}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mf}{0.02}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Number of Days Per Station}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{va}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{center}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{rotation}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{vertical}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Project 1_files/Project 1_8_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \emph{1.1 Which statistical test did you use to analyze the NYC subway
+data? Did you use a one-tail or a two-tail P value? What is the null
+hypothesis? What is your p-critical value?}
+
+The two-tailed Mann-Whitney U Test is used to compare the two samples.
+We will use a p-critical value of .05.
+
+Null hypothesis: The hourly entry rate is the same on rainy and
+non-rainy days. Alternative hypothesis: The hourly entry rate is
+different on rainy and non-rainy days.
+
+\emph{1.2 Why is this statistical test applicable to the dataset? In
+particular, consider the assumptions that the test is making about the
+distribution of ridership in the two samples.}
+
+Data is clearly not normal, so the Mann-Whitney U Test was chosen
+instead of a t-test.
+
+\emph{1.3 What results did you get from this statistical test? These
+should include the following numerical values: p-values, as well as the
+means for each of the two samples under test.}
+
+See results below.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{U}\PY{p}{,} \PY{n}{p} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{mannwhitneyu}\PY{p}{(}\PY{n}{rain}\PY{p}{,} \PY{n}{no\PYZus{}rain}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Mean hourly entries on a rainy day:}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{rain}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Mean hourly entries on a non\PYZhy{}rainy day:}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{no\PYZus{}rain}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{U statistic:}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{U}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{p\PYZhy{}value:}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Mean hourly entries on a rainy day: 15091.9598291
+Mean hourly entries on a non-rainy day: 14280.8696556
+U statistic: 1914829.0
+p-value: 0.0754622901355
+    \end{Verbatim}
+
+    \emph{1.4 What is the significance and interpretation of these results?}
+
+Due to the P value of 7.5\%, we fail to reject the null.
+
+    \subsection*{2. Linear Regression}\label{linear-regression}
+
+    \emph{2.1 What approach did you use to compute the coefficients theta
+and produce prediction for ENTRIESn\_hourly in your regression model}
+
+Statsmodel OLS through the Pandas interface.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c}{\PYZsh{} Produce a dataset that groups all of the entries at a particular time together}
+         \PY{c}{\PYZsh{} This way, the station/unit isn\PYZsq{}t considered}
+         
+         \PY{n}{total\PYZus{}hourly\PYZus{}entries} \PY{o}{=} \PYZbs{}
+             \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{weekday}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{hour}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rain}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{as\PYZus{}index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{y} \PY{o}{=} \PY{n}{total\PYZus{}hourly\PYZus{}entries}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ENTRIESn\PYZus{}hourly}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{x} \PY{o}{=} \PY{n}{total\PYZus{}hourly\PYZus{}entries}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{hour}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{weekday}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rain}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+         \PY{c}{\PYZsh{} This is just statsmodel OLS, but we use the pandas interface to it}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{ols}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+-------------------------Summary of Regression Analysis-------------------------
+
+Formula: Y \textasciitilde{} <hour> + <weekday> + <rain> + <intercept>
+
+Number of Observations:         24
+Number of Degrees of Freedom:   4
+
+R-squared:         0.5588
+Adj R-squared:     0.4926
+
+Rmse:            844.0648
+
+F-stat (3, 20):     8.4422, p-value:     0.0008
+
+Degrees of Freedom: model 3, resid 20
+
+-----------------------Summary of Estimated Coefficients------------------------
+      Variable       Coef    Std Err     t-stat    p-value    CI 2.5\%   CI 97.5\%
+--------------------------------------------------------------------------------
+          hour   101.2211    25.2213       4.01     0.0007    51.7874   150.6547
+       weekday  1046.1914   344.5880       3.04     0.0065   370.7989  1721.5838
+          rain   -15.4076   344.5880      -0.04     0.9648  -690.8001   659.9848
+     intercept   108.0618   390.7261       0.28     0.7850  -657.7613   873.8848
+---------------------------------End of Summary---------------------------------
+    \end{Verbatim}
+
+    \emph{2.2 What features (input variables) did you use in your model? Did
+you use any dummy variables as part of your features?}
+
+Input variables were weekday, hour, and rain. Rain was a dummy variable.
+
+\emph{2.3 Why did you select these features in your model? We are
+looking for specific reasons that lead you to believe that the selected
+features will contribute to the predictive power of your model.}
+
+The regression was done using hour, weekday, and rain as independent
+variables. Hour and weekday were chosen as habit and routine are the
+most likely significant driver of subway usage. Rain was included as it
+was relevant to the assignment.
+
+\emph{2.4 What are the coefficients (or weights) of the non-dummy
+features in your linear regression model?}
+
+The hour coefficient was 101.2211 and the weekday coefficient was
+1046.1914
+
+\emph{2.5 What is your model's R2 (coefficients of determination)
+value?}
+
+The R2 value is 0.5588.
+
+\emph{2.6 What does this R2 value mean for the goodness of fit for your
+regression model? Do you think this linear model to predict ridership is
+appropriate for this dataset, given this R2 value?}
+
+The above ordinary least squares analysis shows that 55.2\% of the
+variance in the global hourly subway entries is explained by the hour
+and if it is a weekday. This suggests a good relationship between if it
+is weekday, the time of day, and the number of people that enter the
+subway in New York City at that time.
+
+    \subsection*{3. Visualization}\label{visualization}
+
+    \emph{3.1 One visualization should contain two histograms: one of
+ENTRIESn\_hourly for rainy days and one of ENTRIESn\_hourly for
+non-rainy days.}
+
+This was included above. It was used to justify the Mann-Whitney U Test,
+so it was more appropriate in that section.
+
+    \emph{3.2 One visualization can be more freeform. You should feel free
+to implement something that we discussed in class (e.g., scatter plots,
+line plots) or attempt to implement something more advanced if you'd
+like}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c}{\PYZsh{} Our goal is to show how close the weather stations are to the subway stations that they provide}
+        \PY{c}{\PYZsh{} weather data for. To do this, we use the latitude and longitude of each to determine where they are}
+        \PY{c}{\PYZsh{} on the Earth. From these points, we use the Haversine formula to calculate the distance. While this}
+        \PY{c}{\PYZsh{} formula assumes the Earth is a sphere, it should be more than good enough for our purposes}
+        
+        \PY{c}{\PYZsh{} Formula from http://en.wikipedia.org/wiki/Haversine\PYZus{}formula}
+        \PY{c}{\PYZsh{} Implementation my own}
+        \PY{k}{def} \PY{n+nf}{haversine}\PY{p}{(}\PY{n}{radius}\PY{p}{,} \PY{n}{lat1}\PY{p}{,} \PY{n}{lat2}\PY{p}{,} \PY{n}{lon1}\PY{p}{,} \PY{n}{lon2}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Haversine formula. All angle variables are in radians\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{inner} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{p}{(}\PY{n}{lat2} \PY{o}{\PYZhy{}} \PY{n}{lat1}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+                            \PY{o}{+} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{lat1}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{lat2}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{p}{(}\PY{n}{lon2} \PY{o}{\PYZhy{}} \PY{n}{lon1}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{radius} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arcsin}\PY{p}{(}\PY{n}{inner}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} This function was tested by plugging some values into this and}
+        \PY{c}{\PYZsh{} comparing with Google Maps walking distance}
+        \PY{k}{def} \PY{n+nf}{earth\PYZus{}distance}\PY{p}{(}\PY{n}{row}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Variables are GPS coordinates\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c}{\PYZsh{} Average Earth radius}
+            \PY{n}{EARTH\PYZus{}RADIUS\PYZus{}MILES} \PY{o}{=} \PY{l+m+mi}{3959}
+            \PY{k}{return} \PY{n}{haversine}\PY{p}{(}\PY{n}{EARTH\PYZus{}RADIUS\PYZus{}MILES}\PY{p}{,} \PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{deg2rad}\PY{p}{(}\PY{n}{row}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{coords} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{station}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{latitude}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{weather\PYZus{}lat}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{longitude}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{weather\PYZus{}lon}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+        \PY{n}{per\PYZus{}station\PYZus{}coords} \PY{o}{=} \PY{n}{coords}\PY{o}{.}\PY{n}{last}\PY{p}{(}\PY{p}{)}
+        \PY{n}{per\PYZus{}station\PYZus{}coords}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{dist}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PYZbs{}
+            \PY{n}{np}\PY{o}{.}\PY{n}{apply\PYZus{}along\PYZus{}axis}\PY{p}{(}\PY{n}{earth\PYZus{}distance}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{per\PYZus{}station\PYZus{}coords}\PY{o}{.}\PY{n}{values}\PY{p}{)}
+        
+        \PY{n}{axis} \PY{o}{=} \PY{n}{per\PYZus{}station\PYZus{}coords}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{dist}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{axis}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Miles between stations}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{axis}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Number of stations}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{axis}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Distance Between Subway and Weather Stations}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb+bp}{None}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Project 1_files/Project 1_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The above visualization shows the distance between the weather station
+and the subway station it provides data for. Large distances suggest the
+weather data is not as representative of the actual weather near the
+subway station. Luckily, all of the weather stations are within 6 miles,
+with the vast majority being within 2.5 miles.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c}{\PYZsh{} These calculations are used in the sections below}
+         \PY{n}{coord\PYZus{}list} \PY{o}{=} \PY{n}{per\PYZus{}station\PYZus{}coords}\PY{p}{[}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{latitude}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{longitude}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{values}
+         \PY{n}{max\PYZus{}dist} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{p}{[}\PY{n}{earth\PYZus{}distance}\PY{p}{(}\PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{y}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{y}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+                         \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{coord\PYZus{}list} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{coord\PYZus{}list}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Maximum distance between two stations: \PYZob{}:.2f\PYZcb{} miles}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{max\PYZus{}dist}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{has\PYZus{}data} \PY{o}{=} \PY{o+ow}{not} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{station}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{CYPRESS HILLS}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                           \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{datetime}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{5/6/11 8:00}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{o}{.}\PY{n}{empty}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Exists data for Cypress Hills at 5/6/11 8:00am: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{has\PYZus{}data}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Maximum distance between two stations: 22.01 miles
+Exists data for Cypress Hills at 5/6/11 8:00am: False
+    \end{Verbatim}
+
+    \subsection*{4. Conclusion}\label{conclusion}
+
+    \emph{4.1 From your analysis and interpretation of the data, do more
+people ride the NYC subway when it is raining or when it is not
+raining?}
+
+It does not appear that there is a statistically significant
+relationship between rain and subway ridership.
+
+\emph{4.2 What analyses lead you to this conclusion? You should use
+results from both your statistical tests and your linear regression to
+support your analysis.}
+
+The Mann-Whitney U Test between means had a p-value of 7.5\%, which is
+too high to be significant. Mann-Whitney U Test performed compared the
+mean weekday daily ridership between stations. However, this is
+sensitive to noise. If a busy station had a couple of rainy days, the
+rainy mean could be brought up significantly. The effect of this could
+be reduced if more than a month of data was used.
+
+The ordinary least squares regression also suggested against rain being
+a factor. It only appeared to impact global daily ridership by about 16
+people, as the coefficient was -15.4. The p-value was also very high,
+suggesting that -15.4 was just noise.
+
+    \subsection*{5. Reflection}\label{reflection}
+
+    \emph{5.1 Please discuss potential shortcomings of the methods of your
+analysis, including: Dataset, Analysis, such as the linear regression
+model or statistical test.}
+
+The dataset used is only from the month of May in 2011. One month is not
+a lot of data, a couple of baseball games could throw off these numbers
+significantly. This is the largest weakness of this dataset. More data
+across a larger frame would greatly increase its usefulness.
+
+There also appears to be missing data points. For example, Cypress Hills
+doesn't have any value at 5/6/11 at 8:00am. This throws off calculations
+like per-station daily values that were used in the above analysis.
+
+The analysis methods used were powerful but rudimentary. The dependent
+variables were picked based on a hunch. Only linear relationships
+between variables were considered. More complicated relationships likely
+exist. An r-squared value of .56 is good, but a better value is almost
+certainly achievable.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
